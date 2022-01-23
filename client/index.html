@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= htmlWebpackPlugin
+      .tags
+      .headTags
+      .filter((tag) => tag.tagName === 'link')
+    %>
+    <title>Cookbook</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <!--
+      Attention!
+      This file is used exclusively as a template for the index.html assembly.
+    -->
+    <%= htmlWebpackPlugin
+      .tags
+      .headTags
+      .filter((tag) => tag.tagName === 'script')
+    %>
+  </body>
+</html>
