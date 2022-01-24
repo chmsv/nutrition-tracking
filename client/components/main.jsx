@@ -2,20 +2,18 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import Head from './head'
-import Input from './common/input'
-import Button from './common/button'
+import Header from './header'
+import InputPanel from './common/inputPanel'
 import Table from './common/table'
-import Header from './common/header'
 
 const Main = () => {
-  const { productsList } = useSelector((store) => store.product)
+  const { productList } = useSelector((store) => store.products)
   return (
     <>
       <Head title="Main" />
       <Header />
-      <Button name="Add Product" />
-      <Input />
-      <Table list={productsList} />
+      <InputPanel />
+      <Table list={productList} />
     </>
   )
 }

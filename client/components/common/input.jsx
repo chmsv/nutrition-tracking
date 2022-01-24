@@ -1,23 +1,26 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
-import { setInputValue } from '../../redux/reducers/common'
-
-const Input = () => {
-  const dispatch = useDispatch()
-  const { inputText } = useSelector((store) => store.common)
-
-  function onChange(inputValue) {
-    dispatch(setInputValue(inputValue))
+// eslint-disable-next-line object-curly-newline
+const Input = ({ id, label, onChange, onKeyPress, value = '', type = 'text' }) => {
+  const submitOnKeyPress = (e) => {
+    if (e.code === 'Enter' || e.which === 13) {
+      onKeyPress()
+    }
   }
-
   return (
-    <input
-      value={inputText}
-      onChange={(e) => onChange(e.target.value)}
-      type="text"
-      className="border rounded p-1 m-2"
-    />
+    <div className="flex flex-col">
+      <label htmlFor={id} className="text-xs font-semibold mx-2 mt-4">
+        {label}
+      </label>
+      <input
+        id={id}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        onKeyPress={(e) => submitOnKeyPress(e)}
+        type={type}
+        className="border rounded p-1 m-2"
+      />
+    </div>
   )
 }
 

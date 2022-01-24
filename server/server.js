@@ -50,19 +50,22 @@ server.get('/api/v1/:product', async (req, res) => {
       console.log(err)
       res.json({
         status: 'error',
-        data: err,
+        data: err
       })
     })
 
   try {
-    const productCard = await foodModel.findOne({ 'name': translatedProduct })
+    const productCard = await foodModel.findOne({ name: translatedProduct })
     if (!productCard) {
       throw Error('Unknown product')
     }
     console.log('Product: ', productCard)
-    res.json(productCard)
+    res.json({
+      status: 'success',
+      data: productCard
+    })
   } catch (err) {
-    console.log('No product found. Looking for in API')
+    console.log(`No product found. Looking for ${translatedProduct} in API`)
 
     await axios({
       method: 'post',
@@ -73,28 +76,36 @@ server.get('/api/v1/:product', async (req, res) => {
       }
     })
       .then(({ data }) => data.foods[0])
-      .then((prodObj) => ({
-        status: 'success',
-        nutritionix_iddb: prodObj.ndb_no,
-        name: prodObj.food_name,
-        calories: prodObj.nf_calories,
-        fat: prodObj.nf_total_fat,
-        carbohydrate: prodObj.nf_total_carbohydrate,
-        protein: prodObj.nf_protein
-      }))
+      .then(
+        ({
+          ndb_no,
+          food_name,
+          nf_calories,
+          nf_total_fat,
+          nf_total_carbohydrate,
+          nf_protein
+        }) => ({
+          nutritionix_iddb: ndb_no,
+          name: food_name,
+          calories: nf_calories,
+          fat: nf_total_fat,
+          carbohydrate: nf_total_carbohydrate,
+          protein: nf_protein
+        })
+      )
       .then(async (productFromAPI) => {
         try {
           const data = await foodModel.create(productFromAPI)
           console.log('New product was added')
           res.json({
             status: 'success',
-            data,
+            data
           })
         } catch (err) {
           console.log(err)
           res.json({
             status: 'error',
-            data: err,
+            data: err
           })
         }
       })
