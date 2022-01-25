@@ -17,10 +17,10 @@ const Table = () => {
   }
 
   return (
-    <div className="overflow-hidden shadow rounded-lg m-2">
+    <div className="overflow-hidden shadow rounded-lg mx-12">
       <table className="min-w-full">
         <thead>
-          <tr className="bg-blue-200">
+          <tr className="bg-slate-100 text-green-700">
             <th className="py-1">Name</th>
             <th>Calories</th>
             <th>Proteins</th>
@@ -33,7 +33,7 @@ const Table = () => {
           {productList.map((element, index) => {
             return (
               // eslint-disable-next-line react/no-array-index-key
-              <tr key={`${element._id}${index}`} className="even:bg-blue-100 text-center">
+              <tr key={`${element._id}${index}`} className="even:bg-green-100 text-center">
                 <td className="py-1">{element?.name}</td>
                 <td>{totalWeightPerElement(element?.calories, element?.weight)}</td>
                 <td>{totalWeightPerElement(element?.protein, element?.weight)}</td>
@@ -46,7 +46,7 @@ const Table = () => {
         </tbody>
         <tfoot>
           <tr className="text-center border-t">
-            <td className="font-bold py-1 max-w-xs">Total:</td>
+            <td className="font-bold py-1 max-w-xs bg-slate-100 text-green-700">Total:</td>
             <td>{totalNutrients.calories}</td>
             <td>{totalNutrients.protein}</td>
             <td>{totalNutrients.fat}</td>
@@ -54,7 +54,7 @@ const Table = () => {
             <td>{totalNutrients.weight} g.</td>
           </tr>
           <tr className="text-center border-t">
-            <td className="font-bold py-1 max-w-xs">Per 100 grams:</td>
+            <td className="font-bold py-1 max-w-xs bg-slate-100 text-green-700">Per 100 grams:</td>
             <td>{nutrientsPer100grams(totalNutrients.calories, totalNutrients.weight)}</td>
             <td>{nutrientsPer100grams(totalNutrients.protein, totalNutrients.weight)}</td>
             <td>{nutrientsPer100grams(totalNutrients.fat, totalNutrients.weight)}</td>

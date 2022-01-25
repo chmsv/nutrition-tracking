@@ -9,7 +9,7 @@ const Input = ({ id, label, onChange, onKeyPress, value = '', type = 'text' }) =
   }
   return (
     <div className="flex flex-col">
-      <label htmlFor={id} className="text-xs font-semibold mx-2 mt-4">
+      <label htmlFor={id} className="text-s font-semibold mx-2 mt-2 text-green-700">
         {label}
       </label>
       <input

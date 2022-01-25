@@ -1,16 +1,31 @@
-# MERN boilerplate
-Client/Server boilerplate for pet-projects
+# Nutrition and calorie tracker
+Calculator for tracking nutrition and calories of products.
 
-## What’s Included?
+#### Frontend:
+- Enter product name and weight
+- Sending product name and weight to the backend
+- Displaying data received from the backend
+
+#### Backend:
+- Get data from client
+- Translate it from Russian into English
+- Request to MongoDB
+- Request to Nutritionix API
+- Store data
+- Return data
+
+
+## Build with
 - React
 - Redux
 - TailwindCSS
-- ESLint
 - ExpressJS
-- Socket.IO`*`
 - Mongoose`*`
 - Webpack
 `*`*Connected via environment variables.*
+
+- Nutritionix API for retrieving data
+- npm package for translation from Russian to English
 
 ## Notice
 Minimum supported `Node.js` version is `12.13.0`
