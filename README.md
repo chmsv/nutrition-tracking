@@ -1,7 +1,7 @@
 # Nutrition and calorie tracker
 Calculator for tracking nutrition and calories of products.
 
-![preview image](https://drive.google.com/file/d/1OJ2qm3LrDkL62RtrUA9pbUictJWKcfWG)
+![preview image](/tracker.png)
 
 #### Frontend:
 - Enter product name and weight
